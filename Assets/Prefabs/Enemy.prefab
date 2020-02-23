@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 114375559836776208}
   - component: {fileID: 58908840954239176}
   - component: {fileID: 50460385276966734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visionRadius: 3
   speed: 1.5
+  damage: 5
 --- !u!58 &58908840954239176
 CircleCollider2D:
   m_ObjectHideFlags: 0

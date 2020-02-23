@@ -34,8 +34,29 @@ public class EnemyController : MonoBehaviour
     
         Vector3 target = initialPosition;
 
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-        if(distance < visionRadius) target = player.transform.position;
+
+        RaycastHit2D hit = Physics2D.Raycast(
+        
+            transform.position,
+            player.transform.position - transform.position,
+            visionRadius,
+            1 << LayerMask.NameToLayer("Default")
+
+        );
+
+        Vector3 f = transform.InverseTransformDirection(player.transform.position - transform.position);
+        Debug.DrawRay(transform.position, f, Color.red);
+
+        if(hit.collider != null){
+            Debug.Log(hit.collider.tag);
+            if(hit.collider.CompareTag("Player")){
+                target = player.transform.position;
+            }
+
+        }
+
+        float distance = Vector3.Distance(target, transform.position);
+        //if(distance < visionRadius) target = player.transform.position;
 
         float fixedSpeed = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, fixedSpeed);
