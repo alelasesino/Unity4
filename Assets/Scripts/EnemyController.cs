@@ -11,12 +11,17 @@ public class EnemyController : MonoBehaviour
     [Range(1f, 2f)]
     public float speed;
 
-    public GameObject player;
+    [Range(1f,100f)]
+    public float damage;
+
+    private GameObject player, healthBar;
 
     private Vector3 initialPosition;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         initialPosition = transform.position;
     }
 
@@ -43,6 +48,13 @@ public class EnemyController : MonoBehaviour
         
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, visionRadius);
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        
+        if(collision.CompareTag("Player"))
+            healthBar.SendMessage("TakeDamage", damage);
 
     }
 
