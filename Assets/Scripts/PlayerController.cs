@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed*Time.deltaTime);
-        Debug.DrawLine(transform.position, target, Color.green);
+        Debug.DrawLine(transform.position, target, Color.blue);
 
     }
 

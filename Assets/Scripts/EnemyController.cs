@@ -45,15 +45,23 @@ public class EnemyController : MonoBehaviour
         );
 
         Vector3 f = transform.InverseTransformDirection(player.transform.position - transform.position);
-        Debug.DrawRay(transform.position, f, Color.red);
+        
+        Color c;
 
         if(hit.collider != null){
             
             if(hit.collider.CompareTag("Player")){
                 target = player.transform.position;
+                c = Color.green;
+            } else {
+                c = Color.red;
             }
 
+        } else {
+            c = Color.red;
         }
+
+        Debug.DrawRay(transform.position,f,c);
 
         float distance = Vector3.Distance(target, transform.position);
         //if(distance < visionRadius) target = player.transform.position;
@@ -61,7 +69,7 @@ public class EnemyController : MonoBehaviour
         float fixedSpeed = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, fixedSpeed);
 
-        Debug.DrawLine(transform.position, target, Color.red);
+        //Debug.DrawLine(transform.position, target, Color.red);
 
     }
 
