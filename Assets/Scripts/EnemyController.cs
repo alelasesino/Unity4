@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
 
 
         RaycastHit2D hit = Physics2D.Raycast(
-        
+            
             transform.position,
             player.transform.position - transform.position,
             visionRadius,

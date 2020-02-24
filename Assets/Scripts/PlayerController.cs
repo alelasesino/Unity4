@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer(){
     
         if(Input.GetMouseButtonDown(LEFT_CLICK)){
-        
+            
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);    
             target.z = 0f;
 
