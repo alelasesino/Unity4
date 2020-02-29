@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     
     //Posicion de destino del jugador
     private Vector3 target;
+    public GameObject bullet;
     
     [Range(3f, 5f)]
     public float speed = 2f;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        Attack();
     }
 
     private void MovePlayer(){
@@ -34,6 +36,14 @@ public class PlayerController : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed*Time.deltaTime);
         Debug.DrawLine(transform.position, target, Color.blue);
+
+    }
+
+    private void Attack(){
+    
+        if(Input.GetKeyDown(KeyCode.Space))
+            Instantiate(bullet, transform.position, transform.rotation);
+        
 
     }
 
